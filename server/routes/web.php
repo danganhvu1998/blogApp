@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/api/users/', 'UsersController');
+Route::resource('/api/blogs/', 'BlogsController');
+
