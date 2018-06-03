@@ -68,7 +68,6 @@ export class GlobalPage {
   }
 
 	sendBlog(title, body){
-		var xhttp = new XMLHttpRequest();  
     var data = "title="+title
       +"&body="+body;
     this.postAjax('http://localhost:8000/api/blogs', data, this.userInform, 'POST' )
