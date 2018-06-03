@@ -14,7 +14,7 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::orderBy('created_at','desc')->paginate(30);
+        $blogs = Blog::orderBy('created_at','desc')->paginate(10);
         return view('blogs.index')->with('blogs', $blogs);
     }
 
@@ -52,9 +52,9 @@ class BlogsController extends Controller
      */
     public function show($id)
     {
-        return "right place ".$id;
-        $blogs = Blog::find($id)->paginate(30);
-        return view('blogs.show')->with('blogs', $blogs);
+        return 123;
+        //$blogs = Blog::find($id)->paginate(30);
+        //return view('blogs.show')->with('blogs', $blogs);
     }
 
     /**

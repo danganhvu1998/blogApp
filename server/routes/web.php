@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/api/users/', 'UsersController');
 Route::resource('/api/blogs/', 'BlogsController');
+Route::post('/api/users/register', 'AuthenticationsController@register')->name('createUser');
+Route::post('/api/users/login', 'AuthenticationsController@login')->name('authenUser');
+Route::get('/api/users/register/create', 'AuthenticationsController@create');
 

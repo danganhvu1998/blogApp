@@ -40,6 +40,17 @@ export class GlobalPage {
   userLog(data){
     console.log(data);
   }
+  
+  blogPrint(data){
+    console.log(data);
+    var blog;
+    var result = JSON.parse(data);
+    for (blog in result['blogs'] ){
+      console.log(result['blogs'][blog]);
+      //this.globalBlogs = result['blogs'][blog];
+      //console.log(blog['title'], blog['body'], blog['user_id']);
+    }
+  }
 
   userInform(data){
     var result = JSON.parse(data);
@@ -72,17 +83,6 @@ export class GlobalPage {
       +"&body="+body;
     this.postAjax('http://localhost:8000/api/blogs', data, this.userInform, 'POST' )
 	}
-
-  blogPrint(data){
-    console.log(data);
-    var blog;
-    var result = JSON.parse(data);
-    for (blog in result['blogs'] ){
-      console.log(result['blogs'][blog]);
-      //this.globalBlogs = result['blogs'][blog];
-      //console.log(blog['title'], blog['body'], blog['user_id']);
-    }
-  }
 
   update(){
     this.postAjax("http://localhost:8000/api/blogs", '', this.blogPrint, 'GET')

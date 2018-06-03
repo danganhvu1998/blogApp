@@ -43,21 +43,29 @@ export class LoginPage {
     return re.test(email);
   }
 
-  postAjax(url, data, success) {
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', url, true);
-      xhr.onreadystatechange = function() {
-          if (xhr.readyState>3 && xhr.status==200) success(xhr.responseText);
-      };
-      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      //xhr.setRequestHeader("Content-type", "application/json");
-      xhr.send(data);
-      return xhr;
+  userInform(data){
+    console.log("Data from USERINFORM = ",data);
+    //this.navCtrl.setRoot(GlobalPage);
   }
 
-  userInform(data){
-    console.log(data);
+  postAjax(url, data, success) {
+    console.log("Sending ...", data);
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+    xhr.onreadystatechange = function() {
+      console.log("Current status:", xhr.readyState, xhr.status);
+      if (xhr.readyState>3 && xhr.status==200) {
+        console.log("SUCCESS", xhr.responseText);
+        success(xhr.responseText);
+      }
+    };
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //xhr.setRequestHeader("Content-type", "application/json");
+    xhr.send(data);
+    return xhr;
   }
+
+
 
   login(){
     var username = this.loginUsername.value;
@@ -67,11 +75,8 @@ export class LoginPage {
       this.presentAlert('Email invalid', '');
     } else {
       console.log("Sending username, password to server ...");
-      var data = {
-        username : username, 
-        password : password
-      }
-      //this.postAjax('', data, this,userInform());
+      var data = "username="+username+"&password="+password;
+      this.postAjax('http://localhost:8000/api/users/login', data, this.userInform);
     }
     //Sent username and password to server to login
   }
@@ -88,13 +93,9 @@ export class LoginPage {
       this.presentAlert('Email invalid', '');
     } else {
       console.log("Sending username, password to server ...");
-      var data = {
-        username : username, 
-        password : password
-      }
-      //this.postAjax('', data, this,userInform());
+      var data = "username="+username+"&password="+password;
+      this.postAjax('http://localhost:8000/api/users/register', data, this.userInform);
     }
-    //Sent username and password to server to register
   }
 
 }
