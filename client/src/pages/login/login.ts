@@ -55,7 +55,6 @@ export class LoginPage {
     xhr.onreadystatechange = function() {
       console.log("Current status:", xhr.readyState, xhr.status);
       if (xhr.readyState>3 && xhr.status==200) {
-        console.log("SUCCESS", xhr.responseText);
         success(xhr.responseText);
       }
     };
@@ -94,7 +93,7 @@ export class LoginPage {
     } else {
       console.log("Sending username, password to server ...");
       var data = "username="+username+"&password="+password;
-      this.postAjax('http://localhost:8000/api/users/register', data, this.userInform);
+      var postResult = this.postAjax('http://localhost:8000/api/users/register', data, this.userInform);
     }
   }
 
