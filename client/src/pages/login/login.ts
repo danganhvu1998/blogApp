@@ -44,18 +44,20 @@ export class LoginPage {
   }
 
   userInform(data){
-    console.log("Data from USERINFORM = ",data);
-    //this.navCtrl.setRoot(GlobalPage);
+    var dataJson = JSON.parse(data);
+    if(dataJson['result']==1) this.navCtrl.setRoot(GlobalPage);
+    else this.presentAlert('Wrong email or password', '');
   }
 
   postAjax(url, data, success) {
     console.log("Sending ...", data);
+    let vm = this;
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url, true);
     xhr.onreadystatechange = function() {
       console.log("Current status:", xhr.readyState, xhr.status);
       if (xhr.readyState>3 && xhr.status==200) {
-        success(xhr.responseText);
+        vm.userInform(xhr.responseText);
       }
     };
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

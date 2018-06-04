@@ -19,7 +19,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage = LoginPage;
+  rootPage = GlobalPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -36,7 +36,7 @@ export class MyApp {
       { title: 'Global Blog', component: GlobalPage },
       { title: 'Chat', component: ChatPage },
       { title: 'User Setting', component: UserPage },
-      { title: 'Login', component: LoginPage }
+      { title: 'Log Out', component: LoginPage }
     ];
   }
 

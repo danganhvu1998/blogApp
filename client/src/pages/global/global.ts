@@ -16,8 +16,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 export class GlobalPage {
 	@ViewChild('title') title;
 	@ViewChild('body') body;
-  globalBlogs : object;
-
+  blogJson = [1,2,3,4,5,6];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
   }
@@ -45,47 +44,49 @@ export class GlobalPage {
     console.log(data);
     var blog;
     var result = JSON.parse(data);
-    for (blog in result['blogs'] ){
-      console.log(result['blogs'][blog]);
-      //this.globalBlogs = result['blogs'][blog];
-      //console.log(blog['title'], blog['body'], blog['user_id']);
+    this.blogJson = result['blogs'];
+    for (blog in this.blogJson ){
+      console.log(this.blogJson[blog]);
     }
   }
 
   userInform(data){
     var result = JSON.parse(data);
-    //cannot run this.presentAlert
     if(result['result']==1){//data posted cfed by server
       console.log('Post ok');
-      //this.presentAlert('Post was posted', '');
+      this.presentAlert('Post was posted', '');
     } else {
       console.log('Post error');
-      //this.presentAlert('Server Error', 'unknown error');
+      this.presentAlert('Server Error', 'unknown error');
     }
   }
 
-  postAjax(url, data, success, requestType) {
-      var xhr = new XMLHttpRequest();
-      if(requestType=='GET') url = url+data;
-      xhr.open(requestType, url, true);
-      xhr.onreadystatechange = function() {
-          if (xhr.readyState>3 && xhr.status==200) success(xhr.responseText);
-      };
-      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      //xhr.setRequestHeader("Content-type", "application/json");
-      if(requestType!='GET') xhr.send(data);
-      else xhr.send();
-      return xhr;
+  postAjax(url, data, requestType) {
+    let vm = this;
+    var xhr = new XMLHttpRequest();
+    if(requestType=='GET') url = url+data;
+    xhr.open(requestType, url, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState>3 && xhr.status==200) {
+          if(requestType=='POST') vm.userInform(xhr.responseText);
+          else vm.blogPrint(xhr.responseText);
+        }
+    };
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //xhr.setRequestHeader("Content-type", "application/json");
+    if(requestType!='GET') xhr.send(data);
+    else xhr.send();
+    return xhr;
   }
 
 	sendBlog(title, body){
     var data = "title="+title
       +"&body="+body;
-    this.postAjax('http://localhost:8000/api/blogs', data, this.userInform, 'POST' )
+    this.postAjax('http://localhost:8000/api/blogs', data, 'POST' )
 	}
 
   update(){
-    this.postAjax("http://localhost:8000/api/blogs", '', this.blogPrint, 'GET')
+    this.postAjax("http://localhost:8000/api/blogs", '', 'GET')
   }
 
   blog(){

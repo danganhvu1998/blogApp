@@ -28,4 +28,35 @@
 	</ion-list>
 	<button ion-button (click)=blog() color="dark" round full>POST</button><br>
 
+	<div *ngFor='let blog of blogJson'>
+		<h5>{{blog['title']}}</h5>
+		<p>{{blog['body']}}</p>
+		<br><p><----*_*_*----></p><br>
+	</div>
 </ion-content>
+<!--
+@foreach($posts as $post)
+    <div class="well">
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}">
+            </div>
+            <div class="col-md-8 col-sm-8">
+                <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
+                <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
+            </div>
+        </div>
+    </div>
+@endforeach
+
+
+<ion-row class="home" *ngFor="let blog of blogJson">
+ 		<div   *ngFor="let homeobj of home.teachers ">
+   			<img src="{{ homeobj?.img }}" alt="">
+  		</div>
+	</ion-row>
+
+
+
+
+-->
