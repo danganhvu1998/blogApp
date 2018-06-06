@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/toPromise';
 
 
 
@@ -58,21 +60,21 @@ export class LoginPage {
   }
 
   postAjax(url, data, success) {
-    this.http.post(url, data, {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }})
-      .then(data => {
-
-        console.log(data.status);
-        console.log(data.data); // data received by server
-        console.log(data.headers);
-
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    let options = new RequestOptions({ headers: headers });
+    return new Promise((resolve, reject) => {
+      this.http.post(url, data, options)
+      .toPromise()
+      .then((response) =>
+      {
+        console.log('API Response : ', response);
       })
-      .catch(error => {
-
-        console.log(error.status);
-        console.log(error.error); // error message as string
-        console.log(error.headers);
-
+      .catch((error) =>
+      { 
+        console.error('API Error : ', error.status);
+        console.log(url, data)
       });
+    });
   }
 
 
@@ -126,4 +128,22 @@ export class LoginPage {
     //xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(data);
     return xhr;
+
+
+
+  return new Promise((resolve, reject) => {
+  this.http.post('url', data, options)
+  .toPromise()
+  .then((response) =>
+  {
+    console.log('API Response : ', response.json());
+    resolve(response.json());
+  })
+  .catch((error) =>
+  {
+    console.error('API Error : ', error.status);
+    console.error('API Error : ', JSON.stringify(error));
+    reject(error.json());
+  });
+});
     */

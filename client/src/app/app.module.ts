@@ -22,6 +22,7 @@ import { GlobalPage } from '../pages/global/global';
     GlobalPage,
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
