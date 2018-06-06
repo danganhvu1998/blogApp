@@ -1,5 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Http, Headers, RequestOptions } from '@angular/http';
+
+
 
 import { GlobalPage } from '../global/global'
 
@@ -22,7 +25,12 @@ export class LoginPage {
   @ViewChild('regisPassword') regisPassword;
   @ViewChild('regisRePassword') regisRePassword;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public alertCtrl: AlertController,
+    public http: Http
+    ) {
   }
 
   ionViewDidLoad() {
@@ -50,20 +58,21 @@ export class LoginPage {
   }
 
   postAjax(url, data, success) {
-    console.log("Sending ...", data);
-    let vm = this;
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', url, true);
-    xhr.onreadystatechange = function() {
-      console.log("Current status:", xhr.readyState, xhr.status);
-      if (xhr.readyState>3 && xhr.status==200) {
-        vm.userInform(xhr.responseText);
-      }
-    };
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    //xhr.setRequestHeader("Content-type", "application/json");
-    xhr.send(data);
-    return xhr;
+    this.http.post(url, data, {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }})
+      .then(data => {
+
+        console.log(data.status);
+        console.log(data.data); // data received by server
+        console.log(data.headers);
+
+      })
+      .catch(error => {
+
+        console.log(error.status);
+        console.log(error.error); // error message as string
+        console.log(error.headers);
+
+      });
   }
 
 
@@ -76,7 +85,8 @@ export class LoginPage {
       this.presentAlert('Email invalid', '');
     } else {
       console.log("Sending username, password to server ...");
-      var data = "username="+username+"&password="+password;
+      //
+      var data = { username : username, password : password };
       this.postAjax('http://localhost:8000/api/users/login', data, this.userInform);
     }
     //Sent username and password to server to login
@@ -94,9 +104,26 @@ export class LoginPage {
       this.presentAlert('Email invalid', '');
     } else {
       console.log("Sending username, password to server ...");
-      var data = "username="+username+"&password="+password;
-      var postResult = this.postAjax('http://localhost:8000/api/users/register', data, this.userInform);
+      //var data = "username="+username+"&password="+password;
+      var data = { username : username, password : password };      
+      this.postAjax('http://localhost:8000/api/users/register', data, this.userInform);
     }
   }
 
 }
+    /*
+    console.log("Sending ...", data);
+    let vm = this;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+    xhr.onreadystatechange = function() {
+      console.log("Current status:", xhr.readyState, xhr.status);
+      if (xhr.readyState>3 && xhr.status==200) {
+        vm.userInform(xhr.responseText);
+      }
+    };
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //xhr.setRequestHeader("Content-type", "application/json");
+    xhr.send(data);
+    return xhr;
+    */
