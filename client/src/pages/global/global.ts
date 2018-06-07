@@ -16,11 +16,6 @@ import { GlobalProvider } from "../../providers/global/global";
   templateUrl: 'global.html',
 })
 export class GlobalPage {
-	@ViewChild('title') title;
-	@ViewChild('body') body;
-  blogJson =[];
-  userID = this.globalVal.userID;
-  userName = this.globalVal.userName;
   //userID = 5;
   //userName = "Dang Anh Vu";
 
@@ -31,6 +26,12 @@ export class GlobalPage {
     public globalVal: GlobalProvider,
     ) {
   }
+
+  @ViewChild('title') title;
+  @ViewChild('body') body;
+  blogJson =[];
+  userID = this.globalVal.userID;
+  userName = this.globalVal.userName;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GlobalPage');
