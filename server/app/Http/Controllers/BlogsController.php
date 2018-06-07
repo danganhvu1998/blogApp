@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Blog;
+use App\User;
 
 class BlogsController extends Controller
 {
@@ -13,9 +14,24 @@ class BlogsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         $blogs = Blog::orderBy('created_at','desc')->paginate(10);
-        return view('blogs.index')->with('blogs', $blogs);
+        $users = User::all();
+        $BLOGS = array();
+        foreach ($blogs as $blog) {
+            //$name = User::where('id', $blog->id)->get();
+            $userName = User::where('id', $blog->user_id)->get()[0]->name;
+            //return $userName[0]->name;
+            //$blog->userName = User::where('id', $blog->id)->get()[0]->name;
+            $blog = [
+                'blog' => $blog,
+                'name' => $userName
+            ];
+            array_push($BLOGS, $blog);
+            #return $blog['name'];
+        }
+        #return $BLOGS;
+        return view('blogs.index')->with('blogs', $BLOGS);
     }
 
     /**
@@ -39,7 +55,7 @@ class BlogsController extends Controller
         $post = new Blog;
         $post->title = $request->title;
         $post->body = $request->body;
-        $post->user_id = 0;
+        $post->user_id = $request->user_id;
         $result = $post->save();
         return view('blogs.store')->with('result', $result);
     }

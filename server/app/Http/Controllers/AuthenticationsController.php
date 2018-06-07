@@ -19,14 +19,18 @@ class AuthenticationsController extends Controller
     	$regis->email = $request->username;
     	$regis->password = $request->password;
     	$result = $regis->save();
-    	return view('authentications.serverAccept')->with('result',$result);
+    	//return view('authentications.serverAccept')->with('result',$result);
+        $check = User::where('email', $request->username)->get();
+        if(count($check)>0 and $check[0]->password==$request->password){
+            return view('authentications.serverAccept')->with('result',$check[0]);
+        }
     }
 
     public function login(request $request){
         //Check if acc existed
         $check = User::where('email', $request->username)->get();
         if(count($check)>0 and $check[0]->password==$request->password){
-            return view('authentications.serverAccept')->with('result',1);
+            return view('authentications.serverAccept')->with('result',$check[0]);
         }
         return view('authentications.serverAccept')->with('result',0);
     }

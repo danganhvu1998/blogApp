@@ -2,7 +2,9 @@
 
 header('Access-Control-Allow-Origin: *');
 echo "{";
-echo '"result": '.$result;
+echo '"result":1,';
+echo '"id":'.$result->id.",";
+echo '"name":"'.$result->name.'"';
 echo "}";
 
 ?>

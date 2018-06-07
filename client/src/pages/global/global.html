@@ -9,7 +9,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Global Blog</ion-title>
+    <ion-title>Welcome to BLOGAPP - {{userName}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -29,7 +29,9 @@
 	<button ion-button (click)=blog() color="dark" round full>POST</button><br>
 
 	<div *ngFor='let blog of blogJson'>
-		<h5>{{blog['title']}}</h5>
+		<font size="3"><strong>{{blog['title']}}</strong></font>
+    <font size="1"><br>time: {{blog['created_at']}}</font>
+    <font size="2"><br>by: <strong>{{blog['created_by']}}</strong></font>
 		<p>{{blog['body']}}</p>
 		<br><p><----*_*_*----></p><br>
 	</div>

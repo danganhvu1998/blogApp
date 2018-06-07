@@ -4,7 +4,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
-
+import { GlobalProvider } from "../../providers/global/global";
 
 import { GlobalPage } from '../global/global'
 
@@ -20,6 +20,7 @@ import { GlobalPage } from '../global/global'
   selector: 'page-login',
   templateUrl: 'login.html',
 })
+
 export class LoginPage {
   @ViewChild('loginUsername') loginUsername;
   @ViewChild('loginPassword') loginPassword;
@@ -27,11 +28,13 @@ export class LoginPage {
   @ViewChild('regisPassword') regisPassword;
   @ViewChild('regisRePassword') regisRePassword;
 
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
     public alertCtrl: AlertController,
-    public http: Http
+    public http: Http,
+    public globalVal: GlobalProvider,
     ) {
   }
 
@@ -53,13 +56,20 @@ export class LoginPage {
     return re.test(email);
   }
 
-  userInform(data){
+  userInform(data, errorRaise){
+    //console.log(data);
+    //return 0;
     var dataJson = JSON.parse(data);
-    if(dataJson['result']==1) this.navCtrl.setRoot(GlobalPage);
-    else this.presentAlert('Wrong email or password', '');
+    console.log(dataJson['result']);
+    if(dataJson['result']>0) {
+      this.globalVal.userID = dataJson['id'];
+      this.globalVal.userName = dataJson['name'];
+      this.navCtrl.setRoot(GlobalPage);
+    }
+    else this.presentAlert(errorRaise, '');
   }
 
-  postAjax(url, data, success) {
+  ___postAjax(url, data, success) {
     let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     let options = new RequestOptions({ headers: headers });
     return new Promise((resolve, reject) => {
@@ -72,9 +82,26 @@ export class LoginPage {
       .catch((error) =>
       { 
         console.error('API Error : ', error.status);
-        console.log(url, data)
+        console.log(url, data);
       });
     });
+  }
+
+  postAjax(url, data, errorRaise){
+    console.log("Sending ...", data);
+    let vm = this;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+    xhr.onreadystatechange = function() {
+      console.log("Current status:", xhr.readyState, xhr.status);
+      if (xhr.readyState>3 && xhr.status==200) {
+        vm.userInform(xhr.responseText, errorRaise);
+      }
+    };
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //xhr.setRequestHeader("Content-type", "application/json");
+    xhr.send(data);
+    return xhr;
   }
 
 
@@ -87,9 +114,9 @@ export class LoginPage {
       this.presentAlert('Email invalid', '');
     } else {
       console.log("Sending username, password to server ...");
-      //
-      var data = { username : username, password : password };
-      this.postAjax('http://localhost:8000/api/users/login', data, this.userInform);
+      var data = "username="+username+"&password="+password;
+      //var data = { username : username, password : password };
+      this.postAjax('http://localhost:8000/api/users/login', data, "Wrong email or password");
     }
     //Sent username and password to server to login
   }
@@ -106,9 +133,9 @@ export class LoginPage {
       this.presentAlert('Email invalid', '');
     } else {
       console.log("Sending username, password to server ...");
-      //var data = "username="+username+"&password="+password;
-      var data = { username : username, password : password };      
-      this.postAjax('http://localhost:8000/api/users/register', data, this.userInform);
+      var data = "username="+username+"&password="+password;
+      //var data = JSON.stringify{ username : username, password : password };      
+      this.postAjax('http://localhost:8000/api/users/register', data, "Email existed");
     }
   }
 

@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
+import { GlobalProvider } from "../../providers/global/global";
+
 /**
  * Generated class for the GlobalPage page.
  *
@@ -16,9 +18,18 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 export class GlobalPage {
 	@ViewChild('title') title;
 	@ViewChild('body') body;
-  blogJson = [1,2,3,4,5,6];
+  blogJson =[];
+  userID = this.globalVal.userID;
+  userName = this.globalVal.userName;
+  //userID = 5;
+  //userName = "Dang Anh Vu";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public alertCtrl: AlertController,
+    public globalVal: GlobalProvider,
+    ) {
   }
 
   ionViewDidLoad() {
@@ -79,9 +90,10 @@ export class GlobalPage {
     return xhr;
   }
 
-	sendBlog(title, body){
+	sendBlog(title, body, id){
     var data = "title="+title
-      +"&body="+body;
+      +"&body="+body
+      +"&user_id="+id.toString();
     this.postAjax('http://localhost:8000/api/blogs', data, 'POST' )
 	}
 
@@ -95,7 +107,7 @@ export class GlobalPage {
   	} else if(this.body.value.length == 0){
   		this.presentAlert('Body cannot be emply', '');
   	} else {
-			this.sendBlog(this.title.value, this.body.value)
+			this.sendBlog(this.title.value, this.body.value, this.userID)
   	}
     this.update()
   }

@@ -48,19 +48,37 @@ var LoginPage = /** @class */ (function () {
         else
             this.presentAlert('Wrong email or password', '');
     };
-    LoginPage.prototype.postAjax = function (url, data, success) {
+    LoginPage.prototype.___postAjax = function (url, data, success) {
+        var _this = this;
         var headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var options = new RequestOptions({ headers: headers });
-        this.http.post(url, data, options)
-            .then(function (data) {
-            console.log(data.status);
-            console.log(data.data); // data received by server
-            console.log(data.headers);
-        }).catch(function (error) {
-            console.log(error.status);
-            console.log(error.error); // error message as string
-            console.log(error.headers);
+        return new Promise(function (resolve, reject) {
+            _this.http.post(url, data, options)
+                .toPromise()
+                .then(function (response) {
+                console.log('API Response : ', response);
+            })
+                .catch(function (error) {
+                console.error('API Error : ', error.status);
+                console.log(url, data);
+            });
         });
+    };
+    LoginPage.prototype.postAjax = function (url, data, success) {
+        console.log("Sending ...", data);
+        var vm = this;
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', url, true);
+        xhr.onreadystatechange = function () {
+            console.log("Current status:", xhr.readyState, xhr.status);
+            if (xhr.readyState > 3 && xhr.status == 200) {
+                vm.userInform(xhr.responseText);
+            }
+        };
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //xhr.setRequestHeader("Content-type", "application/json");
+        xhr.send(data);
+        return xhr;
     };
     LoginPage.prototype.login = function () {
         var username = this.loginUsername.value;
@@ -71,8 +89,8 @@ var LoginPage = /** @class */ (function () {
         }
         else {
             console.log("Sending username, password to server ...");
-            //
-            var data = { username: username, password: password };
+            var data = "username=" + username + "&password=" + password;
+            //var data = { username : username, password : password };
             this.postAjax('http://localhost:8000/api/users/login', data, this.userInform);
         }
         //Sent username and password to server to login
@@ -90,8 +108,8 @@ var LoginPage = /** @class */ (function () {
         }
         else {
             console.log("Sending username, password to server ...");
-            //var data = "username="+username+"&password="+password;
-            var data = { username: username, password: password };
+            var data = "username=" + username + "&password=" + password;
+            //var data = JSON.stringify{ username : username, password : password };      
             this.postAjax('http://localhost:8000/api/users/register', data, this.userInform);
         }
     };
@@ -147,6 +165,20 @@ return xhr;
 
 
 
-
+return new Promise((resolve, reject) => {
+this.http.post('url', data, options)
+.toPromise()
+.then((response) =>
+{
+console.log('API Response : ', response.json());
+resolve(response.json());
+})
+.catch((error) =>
+{
+console.error('API Error : ', error.status);
+console.error('API Error : ', JSON.stringify(error));
+reject(error.json());
+});
+});
 */ 
 //# sourceMappingURL=login.js.map
