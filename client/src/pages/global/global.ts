@@ -30,8 +30,6 @@ export class GlobalPage {
   @ViewChild('title') title;
   @ViewChild('body') body;
   blogJson =[];
-  userID = this.globalVal.userID;
-  userName = this.globalVal.userName;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GlobalPage');
@@ -53,12 +51,12 @@ export class GlobalPage {
   }
   
   blogPrint(data){
-    console.log(data);
+    //console.log(data);
     var blog;
     var result = JSON.parse(data);
     this.blogJson = result['blogs'];
     for (blog in this.blogJson ){
-      console.log(this.blogJson[blog]);
+      //console.log(this.blogJson[blog]);
     }
   }
 
@@ -108,9 +106,13 @@ export class GlobalPage {
   	} else if(this.body.value.length == 0){
   		this.presentAlert('Body cannot be emply', '');
   	} else {
-			this.sendBlog(this.title.value, this.body.value, this.userID)
+			this.sendBlog(this.title.value, this.body.value, this.globalVal.userID)
   	}
     this.update()
+  }
+
+  blogUserInfo(haha){
+    console.log("Writen by userId = ", haha);
   }
 
 }

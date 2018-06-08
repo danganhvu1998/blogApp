@@ -9,7 +9,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Welcome to BLOGAPP - {{userName}}</ion-title>
+    <ion-title>Welcome to BLOGAPP - {{globalVal.userName}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -18,24 +18,34 @@
 	<ion-list>
 	  <ion-item>
 	    <ion-label floating>Blog Title</ion-label>
-	    <ion-input #title value='TITLE' type="text"></ion-input>
+	    <ion-input #title type="text"></ion-input>
 	  </ion-item>
 
 	  <ion-item>
 	    <ion-label floating>Blog Content</ion-label>
-	    <ion-input #body value='BODY' type="text"></ion-input>
+	    <ion-input #body type="text"></ion-input>
 	  </ion-item>
 	</ion-list>
-	<button ion-button (click)=blog() color="dark" round full>POST</button><br>
+	<button ion-button (click)=blog() color="light" round full>POST</button><br>
 
 	<div *ngFor='let blog of blogJson'>
-		<font size="3"><strong>{{blog['title']}}</strong></font>
-    <font size="1"><br>time: {{blog['created_at']}}</font>
-    <font size="2"><br>by: <strong>{{blog['created_by']}}</strong></font>
-		<p>{{blog['body']}}</p>
-		<br><p><----*_*_*----></p><br>
+    <ion-card>
+      <ion-card-header>
+        <ion-item item-right>
+          <strong item-left>{{blog['title']}}</strong>
+          <button ion-button item-right clear small (click)=blogUserInfo() color="danger">
+            <ion-icon name="logo-reddit"></ion-icon>
+            <div>{{blog['created_by']}} - {{blog['user_id']}}</div>
+          </button>
+        </ion-item>
+        <ion-item><p>{{blog['created_at']}}</p></ion-item>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item><p>{{blog['body']}}</p></ion-item>
+      </ion-card-content>
+    </ion-card>
 	</div>
-</ion-content>
+
 <!--
 @foreach($posts as $post)
     <div class="well">
@@ -57,6 +67,15 @@
    			<img src="{{ homeobj?.img }}" alt="">
   		</div>
 	</ion-row>
+
+  <ion-card>
+  <ion-card-header>
+    Header
+  </ion-card-header>
+  <ion-card-content>
+    The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+  </ion-card-content>
+</ion-card>
 
 
 
