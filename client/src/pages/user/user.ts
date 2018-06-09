@@ -63,11 +63,15 @@ export class UserPage {
 
   whatever(){
     console.log(this.userName.value, this.userPass.value, this.password.value);
+    var userPass = this.userPass.value;
+    if(this.userPass.value==''){
+      userPass = this.password.value;
+    }
     var data = "id="+this.globalVal.userID
       +"&password="+this.password.value
       +"&username="+this.globalVal.email
       +"&userName="+this.userName.value
-      +"&userPass="+this.userPass.value;
+      +"&userPass="+userPass;
     console.log(data);
     //api/users/changepass
     this.postAjax('http://localhost:8000/api/users/changepass', data, "Wrong Password");

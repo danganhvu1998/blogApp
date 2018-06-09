@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { Storage } from '@ionic/storage';
+
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
@@ -35,11 +37,24 @@ export class LoginPage {
     public alertCtrl: AlertController,
     public http: Http,
     public globalVal: GlobalProvider,
+    public stoSave: Storage,
     ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    this.tokenCheck();
+  }
+
+  tokenCheck(){
+    console.log("Token checking ...");
+    this.stoSave.get("token").then(result => {
+      console.log("Token: ",result);
+      var data = "token="+result;
+      //this.presentAlert("HAHA", result);
+      this.postAjax('http://localhost:8000/api/users/checktoken', data, "NONE");
+    })
+    //this.navCtrl.setRoot(GlobalPage);
   }
 
   presentAlert(alertTitle, alertBody) {
@@ -56,6 +71,10 @@ export class LoginPage {
     return re.test(email);
   }
 
+  hashCode(s){
+    return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
+  }
+
   userInform(data, errorRaise){
     //console.log(data);
     //return 0;
@@ -65,10 +84,13 @@ export class LoginPage {
       this.globalVal.userID = dataJson['id'];
       this.globalVal.userName = dataJson['name'];
       this.globalVal.email = dataJson['email'];
+      this.stoSave.set('token', dataJson['token']);
       console.log(this.globalVal.email);
       this.navCtrl.setRoot(GlobalPage);
     }
-    else this.presentAlert(errorRaise, '');
+    else if(errorRaise!="NONE") {
+      this.presentAlert(errorRaise, '');
+    }
   }
 
   ___postAjax(url, data, success) {

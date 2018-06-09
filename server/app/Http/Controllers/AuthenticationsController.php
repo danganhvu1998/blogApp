@@ -18,6 +18,7 @@ class AuthenticationsController extends Controller
     	$regis->name = $request->username;
     	$regis->email = $request->username;
     	$regis->password = $request->password;
+        $regis->remember_token = hash('ripemd160', $regis->name.$regis->email.$regis.password);
     	$result = $regis->save();
     	//return view('authentications.serverAccept')->with('result',$result);
         $check = User::where('email', $request->username)->get();
@@ -30,6 +31,9 @@ class AuthenticationsController extends Controller
         //Check if acc existed
         $check = User::where('email', $request->username)->get();
         if(count($check)>0 and $check[0]->password==$request->password){
+            $hashVal = hash('ripemd160', $request->username.$request->password);
+            User::where('email', $request->username)->update(['remember_token' => $hashVal]);
+            $check = User::where('email', $request->username)->get();
             return view('authentications.serverAccept')->with('result',$check[0]);
         }
         return view('authentications.serverRefuse');
@@ -46,11 +50,20 @@ class AuthenticationsController extends Controller
         //id=12&password=hell&username=danganhvu@gmail.com&userName=Đặng Anh Vũ&userPass=hell
     }
 
+    public function checkToken(request $request){
+        $check = User::where('remember_token', $request->token)->get();
+        if(count($check)>0){
+            return view('authentications.serverAccept')->with('result',$check[0]);
+        }
+        return view('authentications.serverRefuse');
+    }
+
     public function create(){
         return view('authentications.create');
     }
 }
 /*
+hash('ripemd160', 'The quick brown fox jumped over the lazy dog.');
 $table->increments('id');
 $table->string('name');
 $table->string('email')->unique();

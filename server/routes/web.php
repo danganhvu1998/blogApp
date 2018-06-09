@@ -21,5 +21,6 @@ Route::get('/api/blogs/{id}', 'BlogsController@show');
 Route::post('/api/users/register', 'AuthenticationsController@register')->name('createUser');
 Route::post('/api/users/login', 'AuthenticationsController@login')->name('authenUser');
 Route::post('/api/users/changepass', 'AuthenticationsController@changePassword');
+Route::post('/api/users/checktoken', 'AuthenticationsController@checkToken');
 Route::get('/api/users/register/create', 'AuthenticationsController@create');
 

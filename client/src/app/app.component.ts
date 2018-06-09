@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { HomePage } from '../pages/home/home';
@@ -7,6 +6,7 @@ import { UserPage } from '../pages/user/user';
 import { ChatPage } from '../pages/chat/chat';
 import { LoginPage } from '../pages/login/login';
 import { GlobalPage } from '../pages/global/global';
+import { LogoutPage } from '../pages/logout/logout';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -36,7 +36,7 @@ export class MyApp {
       { title: 'Global Blog', component: GlobalPage },
       { title: 'Chat', component: ChatPage },
       { title: 'User Setting', component: UserPage },
-      { title: 'Log Out', component: LoginPage }
+      { title: 'Log Out', component: LogoutPage }
     ];
   }
 

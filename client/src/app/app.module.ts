@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -12,6 +13,7 @@ import { ChatPage } from '../pages/chat/chat';
 import { LoginPage } from '../pages/login/login';
 import { GlobalPage } from '../pages/global/global';
 import { ShowPage } from '../pages/show/show';
+import { LogoutPage } from '../pages/logout/logout';
 import { GlobalProvider } from '../providers/global/global';
 
 @NgModule({
@@ -23,11 +25,13 @@ import { GlobalProvider } from '../providers/global/global';
     ChatPage,
     GlobalPage,
     ShowPage,
+    LogoutPage,
   ],
   imports: [
     HttpModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,6 +42,7 @@ import { GlobalProvider } from '../providers/global/global';
     ChatPage,
     GlobalPage,
     ShowPage,
+    LogoutPage,
   ],
   providers: [
     StatusBar,
