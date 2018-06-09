@@ -338,11 +338,15 @@ var UserPage = /** @class */ (function () {
     };
     UserPage.prototype.whatever = function () {
         console.log(this.userName.value, this.userPass.value, this.password.value);
+        var userPass = this.userPass.value;
+        if (this.userPass.value == '') {
+            userPass = this.password.value;
+        }
         var data = "id=" + this.globalVal.userID
             + "&password=" + this.password.value
             + "&username=" + this.globalVal.email
             + "&userName=" + this.userName.value
-            + "&userPass=" + this.userPass.value;
+            + "&userPass=" + userPass;
         console.log(data);
         //api/users/changepass
         this.postAjax('http://localhost:8000/api/users/changepass', data, "Wrong Password");
@@ -363,11 +367,10 @@ var UserPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-user',template:/*ion-inline-start:"/home/kyatod/Dropbox/githubResource/blogApp/client/src/pages/user/user.html"*/'<!--\n  Generated template for the UserPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>User Setting - {{globalVal.userName}}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n	<ion-list>\n\n		<ion-item>\n	    <ion-label>Email : {{globalVal.email}}</ion-label>\n	  </ion-item>\n\n	  <ion-item>\n	    <ion-label>New Username : </ion-label>\n	    <ion-input #userName type="text" value={{globalVal.userName}}></ion-input>\n	  </ion-item>\n\n	  <ion-item>\n	    <ion-label>New Password : </ion-label>\n	    <ion-input #userPass type="password"></ion-input>\n	  </ion-item>\n\n		<ion-item>\n	    <ion-label>Current Password : </ion-label>\n	    <ion-input #password type="password"></ion-input>\n	  </ion-item>	  \n\n	</ion-list>\n	<button ion-button (click)=whatever() color="light" round full>Save Change</button>\n</ion-content>\n'/*ion-inline-end:"/home/kyatod/Dropbox/githubResource/blogApp/client/src/pages/user/user.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */]) === "function" && _c || Object])
     ], UserPage);
     return UserPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=user.js.map
