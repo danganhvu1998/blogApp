@@ -18,7 +18,7 @@ class AuthenticationsController extends Controller
     	$regis->name = $request->username;
     	$regis->email = $request->username;
     	$regis->password = $request->password;
-        $regis->remember_token = hash('ripemd160', $regis->name.$regis->email.$regis.password);
+        $regis->remember_token = hash('ripemd160', $regis->name.$regis->email.$regis->password);
     	$result = $regis->save();
     	//return view('authentications.serverAccept')->with('result',$result);
         $check = User::where('email', $request->username)->get();
