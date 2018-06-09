@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { GlobalProvider } from "../../providers/global/global";
+import { HomePage } from "../home/home";
+import { ShowPage } from "../show/show";
 
 /**
  * Generated class for the GlobalPage page.
@@ -111,8 +113,15 @@ export class GlobalPage {
     this.update()
   }
 
-  blogUserInfo(haha){
-    console.log("Writen by userId = ", haha);
+  blogUserInfo(guestId, guestName){
+    console.log(guestId, guestName);
+    if(guestId == this.globalVal.userID){
+      this.navCtrl.setRoot( HomePage );
+    } else {
+      this.globalVal.guestID = guestId;
+      this.globalVal.guestName = guestName;
+      this.navCtrl.push( ShowPage );
+    }
   }
 
 }

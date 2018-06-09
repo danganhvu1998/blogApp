@@ -11,6 +11,7 @@ import { UserPage } from '../pages/user/user';
 import { ChatPage } from '../pages/chat/chat';
 import { LoginPage } from '../pages/login/login';
 import { GlobalPage } from '../pages/global/global';
+import { ShowPage } from '../pages/show/show';
 import { GlobalProvider } from '../providers/global/global';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { GlobalProvider } from '../providers/global/global';
     UserPage,
     ChatPage,
     GlobalPage,
+    ShowPage,
   ],
   imports: [
     HttpModule,
@@ -35,6 +37,7 @@ import { GlobalProvider } from '../providers/global/global';
     UserPage,
     ChatPage,
     GlobalPage,
+    ShowPage,
   ],
   providers: [
     StatusBar,

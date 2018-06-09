@@ -68,9 +68,19 @@ class BlogsController extends Controller
      */
     public function show($id)
     {
-        return 123;
-        //$blogs = Blog::find($id)->paginate(30);
-        //return view('blogs.show')->with('blogs', $blogs);
+        $blogs = Blog::where('user_id',$id)->orderBy('created_at','desc')->get();
+        $users = User::all();
+        $userName = User::where('id', $id)->get()[0]->name;
+        $BLOGS = array();
+        foreach ($blogs as $blog) {
+            $blog = [
+                'blog' => $blog,
+                'name' => $userName
+            ];
+            array_push($BLOGS, $blog);
+        }
+        //return $blogs[0];
+        return view('blogs.index')->with('blogs', $BLOGS);
     }
 
     /**

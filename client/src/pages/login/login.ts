@@ -60,10 +60,12 @@ export class LoginPage {
     //console.log(data);
     //return 0;
     var dataJson = JSON.parse(data);
-    console.log(dataJson['result']);
+    console.log(dataJson);
     if(dataJson['result']>0) {
       this.globalVal.userID = dataJson['id'];
       this.globalVal.userName = dataJson['name'];
+      this.globalVal.email = dataJson['email'];
+      console.log(this.globalVal.email);
       this.navCtrl.setRoot(GlobalPage);
     }
     else this.presentAlert(errorRaise, '');

@@ -11,7 +11,7 @@ class AuthenticationsController extends Controller
         //Check if acc existed
     	$check = User::where('email', $request->username)->get();
         if(count($check)>0){
-            return view('authentications.serverAccept')->with('result',0);
+            return view('authentications.serverRefuse');
         }
         //Register New Acc
         $regis = new User;
@@ -32,7 +32,18 @@ class AuthenticationsController extends Controller
         if(count($check)>0 and $check[0]->password==$request->password){
             return view('authentications.serverAccept')->with('result',$check[0]);
         }
-        return view('authentications.serverAccept')->with('result',0);
+        return view('authentications.serverRefuse');
+    }
+
+    public function changePassword(request $request){
+        $check = User::where('email', $request->username)->get();
+        if(count($check)>0 and $check[0]->password==$request->password and $check[0]->id==$request->id){
+            User::where('id', $request->id)->update(['name' => $request->userName, 'password' => $request->userPass]);
+            $check = User::where('email', $request->username)->get();
+            return view('authentications.serverAccept')->with('result',$check[0]);
+        }
+        return view('authentications.serverRefuse');
+        //id=12&password=hell&username=danganhvu@gmail.com&userName=Đặng Anh Vũ&userPass=hell
     }
 
     public function create(){

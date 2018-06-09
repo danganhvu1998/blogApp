@@ -15,5 +15,34 @@
 
 
 <ion-content padding>
+	<ion-list>
+	  <ion-item>
+	    <ion-label floating>Blog Title</ion-label>
+	    <ion-input #title type="text"></ion-input>
+	  </ion-item>
 
+	  <ion-item>
+	    <ion-label floating>Blog Content</ion-label>
+	    <ion-input #body type="text"></ion-input>
+	  </ion-item>
+	</ion-list>
+	<button ion-button (click)=blog() color="light" round full>POST</button><br>
+
+	<div *ngFor='let blog of blogJson'>
+    <ion-card>
+      <ion-card-header>
+        <ion-item item-right>
+          <strong item-left>{{blog.title}}</strong>
+          <button ion-button item-right clear small (click)=blogUserInfo(blog.user_id,blog.created_by) color="danger">
+            <ion-icon name="logo-reddit"></ion-icon>
+            <div>{{blog['created_by']}} - {{blog['user_id']}}</div>
+          </button>
+        </ion-item>
+        <ion-item><p>{{blog['created_at']}}</p></ion-item>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item><p>{{blog['body']}}</p></ion-item>
+      </ion-card-content>
+    </ion-card>
+	</div>
 </ion-content>

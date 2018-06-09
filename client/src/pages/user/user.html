@@ -9,11 +9,33 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>User Setting</ion-title>
+    <ion-title>User Setting - {{globalVal.userName}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+	<ion-list>
 
+		<ion-item>
+	    <ion-label>Email : {{globalVal.email}}</ion-label>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label>New Username : </ion-label>
+	    <ion-input #userName type="text" value={{globalVal.userName}}></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label>New Password : </ion-label>
+	    <ion-input #userPass type="password"></ion-input>
+	  </ion-item>
+
+		<ion-item>
+	    <ion-label>Current Password : </ion-label>
+	    <ion-input #password type="password"></ion-input>
+	  </ion-item>	  
+
+	</ion-list>
+	<button ion-button (click)=whatever() color="light" round full>Save Change</button>
 </ion-content>
