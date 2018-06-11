@@ -61,6 +61,7 @@ class AuthenticationsController extends Controller
     public function create(){
         return view('authentications.create');
     }
+
 }
 /*
 hash('ripemd160', 'The quick brown fox jumped over the lazy dog.');

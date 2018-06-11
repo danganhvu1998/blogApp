@@ -28,9 +28,9 @@ import { GlobalProvider } from '../providers/global/global';
     LogoutPage,
   ],
   imports: [
-    HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule,
     IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],

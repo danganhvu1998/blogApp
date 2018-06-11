@@ -19,6 +19,7 @@ class VerifyCsrfToken extends Middleware
         '/api/users/login',
         '/api/users/changepass',
         '/api/blogs/{id}',
-        '/api/users/checktoken'
+        '/api/users/checktoken',
+        '/api/chats/test',
     ];
 }
