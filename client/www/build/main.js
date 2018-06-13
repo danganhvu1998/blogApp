@@ -106,7 +106,7 @@ var ChatPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_toPromise__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_toPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_global_global__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__global_global__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__global_global__ = __webpack_require__(54);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -509,19 +509,19 @@ var map = {
 		6
 	],
 	"../pages/global/global.module": [
-		289,
+		286,
 		5
 	],
 	"../pages/home/home.module": [
-		286,
+		287,
 		4
 	],
 	"../pages/login/login.module": [
-		287,
+		288,
 		3
 	],
 	"../pages/logout/logout.module": [
-		288,
+		289,
 		2
 	],
 	"../pages/show/show.module": [
@@ -576,12 +576,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(284);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_user_user__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_chat_chat__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_login_login__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_global_global__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_show_show__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_global_global__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_show_show__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_logout_logout__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_global_global__ = __webpack_require__(33);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -626,10 +626,10 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/chat/chat.module#ChatPageModule', name: 'ChatPage', segment: 'chat', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/global/global.module#GlobalPageModule', name: 'GlobalPage', segment: 'global', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/logout/logout.module#LogoutPageModule', name: 'LogoutPage', segment: 'logout', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/global/global.module#GlobalPageModule', name: 'GlobalPage', segment: 'global', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show/show.module#ShowPageModule', name: 'ShowPage', segment: 'show', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/user/user.module#UserPageModule', name: 'UserPage', segment: 'user', priority: 'low', defaultHistory: [] }
                     ]
@@ -670,10 +670,10 @@ var AppModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_home_home__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_home_home__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_user_user__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_chat_chat__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_global_global__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_global_global__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_logout_logout__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_status_bar__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_splash_screen__ = __webpack_require__(199);
@@ -804,252 +804,12 @@ var GlobalProvider = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_global_global__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__show_show__ = __webpack_require__(55);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var HomePage = /** @class */ (function () {
-    function HomePage(navCtrl, navParams, alertCtrl, globalVal) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.alertCtrl = alertCtrl;
-        this.globalVal = globalVal;
-        this.blogJson = [];
-    }
-    HomePage_1 = HomePage;
-    HomePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad GlobalPage');
-        this.update();
-    };
-    HomePage.prototype.presentAlert = function (alertTitle, alertBody) {
-        var alert = this.alertCtrl.create({
-            title: alertTitle,
-            subTitle: alertBody,
-            buttons: ['OK']
-        });
-        alert.present();
-    };
-    HomePage.prototype.userLog = function (data) {
-        console.log(data);
-    };
-    HomePage.prototype.blogPrint = function (data) {
-        //console.log(data);
-        var blog;
-        var result = JSON.parse(data);
-        this.blogJson = result['blogs'];
-        for (blog in this.blogJson) {
-            //console.log(this.blogJson[blog]);
-        }
-    };
-    HomePage.prototype.userInform = function (data) {
-        var result = JSON.parse(data);
-        if (result['result'] == 1) {
-            console.log('Post ok');
-            this.presentAlert('Post was posted', '');
-        }
-        else {
-            console.log('Post error');
-            this.presentAlert('Server Error', 'unknown error');
-        }
-    };
-    HomePage.prototype.postAjax = function (url, data, requestType) {
-        var vm = this;
-        var xhr = new XMLHttpRequest();
-        if (requestType == 'GET')
-            url = url + data;
-        xhr.open(requestType, url, true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState > 3 && xhr.status == 200) {
-                if (requestType == 'POST')
-                    vm.userInform(xhr.responseText);
-                else
-                    vm.blogPrint(xhr.responseText);
-            }
-        };
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //xhr.setRequestHeader("Content-type", "application/json");
-        if (requestType != 'GET')
-            xhr.send(data);
-        else
-            xhr.send();
-        return xhr;
-    };
-    HomePage.prototype.sendBlog = function (title, body, id) {
-        var data = "title=" + title
-            + "&body=" + body
-            + "&user_id=" + id.toString();
-        this.postAjax('http://localhost:8000/api/blogs', data, 'POST');
-    };
-    HomePage.prototype.update = function () {
-        this.postAjax("http://localhost:8000/api/blogs/", this.globalVal.userID.toString(), 'GET');
-    };
-    HomePage.prototype.blog = function () {
-        if (this.title.value.length == 0) {
-            this.presentAlert('Title cannot be emply', '');
-        }
-        else if (this.body.value.length == 0) {
-            this.presentAlert('Body cannot be emply', '');
-        }
-        else {
-            this.sendBlog(this.title.value, this.body.value, this.globalVal.userID);
-        }
-        this.update();
-    };
-    HomePage.prototype.blogUserInfo = function (guestId, guestName) {
-        console.log(guestId, guestName);
-        if (guestId == this.globalVal.userID) {
-            this.navCtrl.setRoot(HomePage_1);
-        }
-        else {
-            this.globalVal.guestID = guestId;
-            this.globalVal.guestName = guestName;
-            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__show_show__["a" /* ShowPage */]);
-        }
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('title'),
-        __metadata("design:type", Object)
-    ], HomePage.prototype, "title", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('body'),
-        __metadata("design:type", Object)
-    ], HomePage.prototype, "body", void 0);
-    HomePage = HomePage_1 = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/kyatod/Dropbox/githubResource/blogApp/client/src/pages/home/home.html"*/'<!--\n  Generated template for the HomePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>User Blog</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n	<ion-list>\n	  <ion-item>\n	    <ion-label floating>Blog Title</ion-label>\n	    <ion-input #title type="text"></ion-input>\n	  </ion-item>\n\n	  <ion-item>\n	    <ion-label floating>Blog Content</ion-label>\n	    <ion-input #body type="text"></ion-input>\n	  </ion-item>\n	</ion-list>\n	<button ion-button (click)=blog() color="light" round full>POST</button><br>\n\n	<div *ngFor=\'let blog of blogJson\'>\n    <ion-card>\n      <ion-card-header>\n        <ion-item item-right>\n          <strong item-left>{{blog.title}}</strong>\n          <button ion-button item-right clear small (click)=blogUserInfo(blog.user_id,blog.created_by) color="danger">\n            <ion-icon name="logo-reddit"></ion-icon>\n            <div>{{blog[\'created_by\']}} - {{blog[\'user_id\']}}</div>\n          </button>\n        </ion-item>\n        <ion-item><p>{{blog[\'created_at\']}}</p></ion-item>\n      </ion-card-header>\n      <ion-card-content>\n        <ion-item><p>{{blog[\'body\']}}</p></ion-item>\n      </ion-card-content>\n    </ion-card>\n	</div>\n</ion-content>'/*ion-inline-end:"/home/kyatod/Dropbox/githubResource/blogApp/client/src/pages/home/home.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */]])
-    ], HomePage);
-    return HomePage;
-    var HomePage_1;
-}());
-
-//# sourceMappingURL=home.js.map
-
-/***/ }),
-
-/***/ 55:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShowPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_global_global__ = __webpack_require__(33);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/**
- * Generated class for the ShowPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ShowPage = /** @class */ (function () {
-    function ShowPage(navCtrl, navParams, globalVal) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.globalVal = globalVal;
-        this.blogJson = [];
-    }
-    ShowPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ShowPage');
-        this.update();
-    };
-    ShowPage.prototype.blogPrint = function (data) {
-        //console.log(data);
-        var blog;
-        var result = JSON.parse(data);
-        this.blogJson = result['blogs'];
-        for (blog in this.blogJson) {
-            //console.log(this.blogJson[blog]);
-        }
-    };
-    ShowPage.prototype.postAjax = function (url, data, requestType) {
-        var vm = this;
-        var xhr = new XMLHttpRequest();
-        if (requestType == 'GET')
-            url = url + data;
-        xhr.open(requestType, url, true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState > 3 && xhr.status == 200) {
-                vm.blogPrint(xhr.responseText);
-            }
-        };
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //xhr.setRequestHeader("Content-type", "application/json");
-        if (requestType != 'GET')
-            xhr.send(data);
-        else
-            xhr.send();
-        return xhr;
-    };
-    ShowPage.prototype.sendBlog = function (title, body, id) {
-        var data = "title=" + title
-            + "&body=" + body
-            + "&user_id=" + id.toString();
-        this.postAjax('http://localhost:8000/api/blogs', data, 'POST');
-    };
-    ShowPage.prototype.update = function () {
-        this.postAjax("http://localhost:8000/api/blogs/", this.globalVal.guestID.toString(), 'GET');
-    };
-    ShowPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-show',template:/*ion-inline-start:"/home/kyatod/Dropbox/githubResource/blogApp/client/src/pages/show/show.html"*/'<!--\n  Generated template for the ShowPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{globalVal.guestName}}\'s Blog Page</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n	<div *ngFor=\'let blog of blogJson\'>\n    <ion-card>\n      <ion-card-header>\n        <ion-item item-right>\n          <strong item-left>{{blog.title}}</strong>\n        </ion-item>\n        <ion-item><p>{{blog[\'created_at\']}}</p></ion-item>\n      </ion-card-header>\n      <ion-card-content>\n        <ion-item><p>{{blog[\'body\']}}</p></ion-item>\n      </ion-card-content>\n    </ion-card>\n	</div>\n\n</ion-content>\n'/*ion-inline-end:"/home/kyatod/Dropbox/githubResource/blogApp/client/src/pages/show/show.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */]])
-    ], ShowPage);
-    return ShowPage;
-}());
-
-//# sourceMappingURL=show.js.map
-
-/***/ }),
-
-/***/ 56:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GlobalPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_global_global__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__show_show__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__show_show__ = __webpack_require__(56);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1212,6 +972,246 @@ loadDoc(type) {
 
  */ 
 //# sourceMappingURL=global.js.map
+
+/***/ }),
+
+/***/ 55:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_global_global__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__show_show__ = __webpack_require__(56);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * Generated class for the HomePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var HomePage = /** @class */ (function () {
+    function HomePage(navCtrl, navParams, alertCtrl, globalVal) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.alertCtrl = alertCtrl;
+        this.globalVal = globalVal;
+        this.blogJson = [];
+    }
+    HomePage_1 = HomePage;
+    HomePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad GlobalPage');
+        this.update();
+    };
+    HomePage.prototype.presentAlert = function (alertTitle, alertBody) {
+        var alert = this.alertCtrl.create({
+            title: alertTitle,
+            subTitle: alertBody,
+            buttons: ['OK']
+        });
+        alert.present();
+    };
+    HomePage.prototype.userLog = function (data) {
+        console.log(data);
+    };
+    HomePage.prototype.blogPrint = function (data) {
+        //console.log(data);
+        var blog;
+        var result = JSON.parse(data);
+        this.blogJson = result['blogs'];
+        for (blog in this.blogJson) {
+            //console.log(this.blogJson[blog]);
+        }
+    };
+    HomePage.prototype.userInform = function (data) {
+        var result = JSON.parse(data);
+        if (result['result'] == 1) {
+            console.log('Post ok');
+            this.presentAlert('Post was posted', '');
+        }
+        else {
+            console.log('Post error');
+            this.presentAlert('Server Error', 'unknown error');
+        }
+    };
+    HomePage.prototype.postAjax = function (url, data, requestType) {
+        var vm = this;
+        var xhr = new XMLHttpRequest();
+        if (requestType == 'GET')
+            url = url + data;
+        xhr.open(requestType, url, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState > 3 && xhr.status == 200) {
+                if (requestType == 'POST')
+                    vm.userInform(xhr.responseText);
+                else
+                    vm.blogPrint(xhr.responseText);
+            }
+        };
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //xhr.setRequestHeader("Content-type", "application/json");
+        if (requestType != 'GET')
+            xhr.send(data);
+        else
+            xhr.send();
+        return xhr;
+    };
+    HomePage.prototype.sendBlog = function (title, body, id) {
+        var data = "title=" + title
+            + "&body=" + body
+            + "&user_id=" + id.toString();
+        this.postAjax('http://localhost:8000/api/blogs', data, 'POST');
+    };
+    HomePage.prototype.update = function () {
+        this.postAjax("http://localhost:8000/api/blogs/", this.globalVal.userID.toString(), 'GET');
+    };
+    HomePage.prototype.blog = function () {
+        if (this.title.value.length == 0) {
+            this.presentAlert('Title cannot be emply', '');
+        }
+        else if (this.body.value.length == 0) {
+            this.presentAlert('Body cannot be emply', '');
+        }
+        else {
+            this.sendBlog(this.title.value, this.body.value, this.globalVal.userID);
+        }
+        this.update();
+    };
+    HomePage.prototype.blogUserInfo = function (guestId, guestName) {
+        console.log(guestId, guestName);
+        if (guestId == this.globalVal.userID) {
+            this.navCtrl.setRoot(HomePage_1);
+        }
+        else {
+            this.globalVal.guestID = guestId;
+            this.globalVal.guestName = guestName;
+            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__show_show__["a" /* ShowPage */]);
+        }
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('title'),
+        __metadata("design:type", Object)
+    ], HomePage.prototype, "title", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('body'),
+        __metadata("design:type", Object)
+    ], HomePage.prototype, "body", void 0);
+    HomePage = HomePage_1 = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-home',template:/*ion-inline-start:"/home/kyatod/Dropbox/githubResource/blogApp/client/src/pages/home/home.html"*/'<!--\n  Generated template for the HomePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>User Blog</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n	<ion-list>\n	  <ion-item>\n	    <ion-label floating>Blog Title</ion-label>\n	    <ion-input #title type="text"></ion-input>\n	  </ion-item>\n\n	  <ion-item>\n	    <ion-label floating>Blog Content</ion-label>\n	    <ion-input #body type="text"></ion-input>\n	  </ion-item>\n	</ion-list>\n	<button ion-button (click)=blog() color="light" round full>POST</button><br>\n\n	<div *ngFor=\'let blog of blogJson\'>\n    <ion-card>\n      <ion-card-header>\n        <ion-item item-right>\n          <strong item-left>{{blog.title}}</strong>\n          <button ion-button item-right clear small (click)=blogUserInfo(blog.user_id,blog.created_by) color="danger">\n            <ion-icon name="logo-reddit"></ion-icon>\n            <div>{{blog[\'created_by\']}} - {{blog[\'user_id\']}}</div>\n          </button>\n        </ion-item>\n        <ion-item><p>{{blog[\'created_at\']}}</p></ion-item>\n      </ion-card-header>\n      <ion-card-content>\n        <ion-item><p>{{blog[\'body\']}}</p></ion-item>\n      </ion-card-content>\n    </ion-card>\n	</div>\n</ion-content>'/*ion-inline-end:"/home/kyatod/Dropbox/githubResource/blogApp/client/src/pages/home/home.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */]])
+    ], HomePage);
+    return HomePage;
+    var HomePage_1;
+}());
+
+//# sourceMappingURL=home.js.map
+
+/***/ }),
+
+/***/ 56:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShowPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_global_global__ = __webpack_require__(33);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the ShowPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ShowPage = /** @class */ (function () {
+    function ShowPage(navCtrl, navParams, globalVal) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.globalVal = globalVal;
+        this.blogJson = [];
+    }
+    ShowPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ShowPage');
+        this.update();
+    };
+    ShowPage.prototype.blogPrint = function (data) {
+        //console.log(data);
+        var blog;
+        var result = JSON.parse(data);
+        this.blogJson = result['blogs'];
+        for (blog in this.blogJson) {
+            //console.log(this.blogJson[blog]);
+        }
+    };
+    ShowPage.prototype.postAjax = function (url, data, requestType) {
+        var vm = this;
+        var xhr = new XMLHttpRequest();
+        if (requestType == 'GET')
+            url = url + data;
+        xhr.open(requestType, url, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState > 3 && xhr.status == 200) {
+                vm.blogPrint(xhr.responseText);
+            }
+        };
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //xhr.setRequestHeader("Content-type", "application/json");
+        if (requestType != 'GET')
+            xhr.send(data);
+        else
+            xhr.send();
+        return xhr;
+    };
+    ShowPage.prototype.sendBlog = function (title, body, id) {
+        var data = "title=" + title
+            + "&body=" + body
+            + "&user_id=" + id.toString();
+        this.postAjax('http://localhost:8000/api/blogs', data, 'POST');
+    };
+    ShowPage.prototype.update = function () {
+        this.postAjax("http://localhost:8000/api/blogs/", this.globalVal.guestID.toString(), 'GET');
+    };
+    ShowPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-show',template:/*ion-inline-start:"/home/kyatod/Dropbox/githubResource/blogApp/client/src/pages/show/show.html"*/'<!--\n  Generated template for the ShowPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{globalVal.guestName}}\'s Blog Page</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n	<div *ngFor=\'let blog of blogJson\'>\n    <ion-card>\n      <ion-card-header>\n        <ion-item item-right>\n          <strong item-left>{{blog.title}}</strong>\n        </ion-item>\n        <ion-item><p>{{blog[\'created_at\']}}</p></ion-item>\n      </ion-card-header>\n      <ion-card-content>\n        <ion-item><p>{{blog[\'body\']}}</p></ion-item>\n      </ion-card-content>\n    </ion-card>\n	</div>\n\n</ion-content>\n'/*ion-inline-end:"/home/kyatod/Dropbox/githubResource/blogApp/client/src/pages/show/show.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_global_global__["a" /* GlobalProvider */]])
+    ], ShowPage);
+    return ShowPage;
+}());
+
+//# sourceMappingURL=show.js.map
 
 /***/ })
 
